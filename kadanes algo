@@ -20,3 +20,4 @@ System.out.println(maxSum);    }
         Kadanes(numbers);
     }
 }
+//if there is any test case in which all members are -ve then thhis will give us zero but remember kuch aisa bnana hai jisse hume unme se sbse chota -ve number miljaye
