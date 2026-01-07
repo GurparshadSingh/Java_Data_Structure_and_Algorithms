@@ -1,0 +1,14 @@
+public class subString {
+    public static String sub_String(String str, int si, int ei) {
+        String substStr = "";
+        for (int i = si; i < ei; i++) {
+            substStr += str.charAt(i);
+        }
+        return substStr;
+    }
+
+    public static void main(String[] args) {
+        String str = "HelloWorld";
+        System.out.println(sub_String(str, 0, 5));
+    }
+}
