@@ -1,0 +1,11 @@
+public class clearibits {
+    public static int clear_i_bits(int n, int i){
+    int bitMask = (~0)<<i;
+    return n & bitMask;
+
+    }
+    
+    public static void main(String[] args) {
+        
+    }
+}
