@@ -1,0 +1,25 @@
+public class inheritence {
+    public static void main(String[] args) {
+        fish shark = new fish();
+        shark.eat();
+    }
+
+    // base class
+     static class animal{
+        String color;
+        void eat(){
+            System.out.println("eats");
+        }
+        void breaths(){
+            System.out.println("breaths");
+        }
+    }
+    // derived class
+
+     class fish extends animal{
+        int fins;
+        void swims(){
+            System.out.println("swims");
+        }
+    }
+}
