@@ -1,0 +1,42 @@
+public class abstract_ {
+    public static void main(String[] args) {
+       Horse h = new Horse();
+       h.eat(); 
+       h.walk();
+
+       Chicken c = new Chicken();
+        c.eat();
+        c.walk();
+    }
+    abstract static class Animal{
+        Animal color(){
+            System.out.println("Brown");
+        }
+        
+        void eat(){
+            System.out.println("eats");
+        }
+        abstract void walk();
+    }
+
+    static class Horse extends Animal{
+          void change_color(){
+            System.out.println("Dark Brown");
+          }
+    
+        //    @Override
+        void walk(){
+        System.out.println("walks on 4 legs");
+    }
+}
+
+     static class Chicken extends Animal{
+        // @Override
+        void walk(){
+            System.out.println("walks on 2 legs");
+        }
+    }
+   
+     
+}
+
