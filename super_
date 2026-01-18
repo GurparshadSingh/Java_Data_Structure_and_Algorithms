@@ -1,0 +1,20 @@
+public class super_ {
+    public static void main(String[] args) {
+        Horse h = new Horse();
+
+    }
+     static class Animal{
+
+         Animal() {
+            System.out.println("Animal const is called...");
+        }
+        
+       static class Horse extends Animal{
+        
+        Horse(){
+            super();
+         System.out.println("Horse const is called");
+        }
+       }
+     }
+}
