@@ -6,7 +6,7 @@ public class lo {
             return -1;
         }
         int isFound = lastOcc(arr, key, i+1);
-        if (arr[i] == key && arr[i]==key) {
+        if (arr[i] == key) {
             return i;
         }
 
