@@ -1,0 +1,33 @@
+
+import java.util.Stack;
+
+public class practice {
+
+    public static boolean parenthesis(String str) {
+        Stack<Character> s = new Stack<>();
+        for (int index = 0; index < str.length(); index++) {
+            char ch = str.charAt(index);
+            if (ch == '(' || ch == '{' || ch == '[') {
+                s.push(ch);
+            } else {
+                if (s.isEmpty()) {
+                    return false;
+                }
+                if ((s.peek() == '(' && ch == ')') || (s.peek() == '{' && ch == '}') || (s.peek() == '[' && ch == ']')) {
+                    s.pop();
+                }else{
+                    return false;
+                }
+            }
+        }
+        if (s.isEmpty()) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        String str = "({})[]";
+        parenthesis(str);
+    }
