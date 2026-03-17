@@ -1,0 +1,57 @@
+import java.util.Stack;
+
+public class practice {
+
+    public static void maxArea(int arr[]) {
+        int maxArea = 0;
+        int n = arr.length;
+
+        int nextsmallerRight[] = new int[n];
+        int nextsmallerLeft[] = new int[n];
+
+        Stack<Integer> s = new Stack<>();
+
+        // Next Smaller Right
+        for (int i = n - 1; i >= 0; i--) {
+            while (!s.isEmpty() && arr[s.peek()] >= arr[i]) {
+                s.pop();
+            }
+            if (s.isEmpty()) {
+                nextsmallerRight[i] = n;
+            } else {
+                nextsmallerRight[i] = s.peek();
+            }
+            s.push(i);
+        }
+
+        s = new Stack<>();
+
+        // Next Smaller Left
+        for (int i = 0; i < n; i++) {
+            while (!s.isEmpty() && arr[s.peek()] >= arr[i]) {
+                s.pop();
+            }
+            if (s.isEmpty()) {
+                nextsmallerLeft[i] = -1;
+            } else {
+                nextsmallerLeft[i] = s.peek();
+            }
+            s.push(i);
+        }
+
+        // Area calculation
+        for (int i = 0; i < n; i++) {
+            int height = arr[i];
+            int width = nextsmallerRight[i] - nextsmallerLeft[i] - 1;
+            int currArea = height * width;
+            maxArea = Math.max(currArea, maxArea);
+        }
+
+        System.out.println("maxArea in histogram is: " + maxArea);
+    }
+
+    public static void main(String[] args) {
+        int arr[] = {2, 1, 5, 6, 2, 3};
+        maxArea(arr);
+    }
+}
