@@ -1,25 +1,27 @@
 
-public class binary {
-   public static int binary_search(int arr[], int key) {
-      int start = arr[0];
-      int end = arr.length;
-      int mid = (start + end) / 2;
-      if (arr[mid] == key) {
-         return mid;
-      }
-      if (arr[mid] < key) {
-         start = mid + 1;
-      } else {
-         end = mid - 1;
-      }
-   return -1;
-   }
+public class solution {
 
-   public static void main(String args[]) {
-      int arr[] = { 2, 4, 6, 8, 10, 12, 14,16};
-      int key = 10;
-     
-    System.out.println("The index of key in array is "+ binary_search(arr, key));
- 
-   }
+    public static int search(int arr[], int target) {
+        int si = 0;
+        int ei = arr.length - 1;
+        while (si <= ei) {
+
+            int mid = si + (ei - si) / 2;
+            if (arr[mid] == target) {
+                return mid;
+            }
+            if (target < arr[mid]) {
+                ei = mid - 1;
+            } else {
+                si = mid + 1;
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        int arr[] = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91};
+        int target = 16;
+        System.out.println(search(arr, target));
+    }
 }
