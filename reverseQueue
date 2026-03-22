@@ -1,0 +1,18 @@
+import java.util.*;
+
+public class solution {
+    public static void reverseQueue(Queue<Integer> q) {
+        Stack<Integer> s = new Stack<>();
+
+        // Step 1: queue → stack
+        while (!q.isEmpty()) {
+            s.push(q.remove());
+        }
+
+        // Step 2: stack → queue
+        while (!s.isEmpty()) {
+            q.add(s.pop());
+        }
+    }
+
+}
