@@ -1,23 +1,31 @@
-public class kadanes {
-   public static void Kadanes(int numbers[]){
-    int maxSum=Integer.MIN_VALUE;
-    int currSum=0;
-        for (int i = 0; i < numbers.length; i++) {
-            currSum+=numbers[i];
-            if(currSum<0){
-                currSum=0;
-            }else{
-                if (currSum>maxSum){
-                    maxSum=currSum;
+public class solution {
+    public static int kadanes(int arr[]) {
+        int maxSum = Integer.MIN_VALUE;
+        int currSum = 0;
+        int maxElement = Integer.MIN_VALUE;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > maxElement) {
+                maxElement = arr[i];
+            }
+            currSum += arr[i];
+            if (currSum < 0) {
+                currSum = 0;
+            } else {
+                if (currSum > maxSum) {
+                    maxSum = currSum;
                 }
             }
         }
+        if (maxSum == Integer.MIN_VALUE) {
+            return maxElement;
+        } else {
+            return maxSum;
+        }
 
-System.out.println(maxSum);    }
-   
+    }
+
     public static void main(String[] args) {
-        int numbers[]={-2,-3,4,-1,-2,1,5,-3};
-        Kadanes(numbers);
+        int arr[] = { -1, -2, -3 };
+        System.out.println(kadanes(arr));
     }
 }
-//if there is any test case in which all members are -ve then thhis will give us zero but remember kuch aisa bnana hai jisse hume unme se sbse chota -ve number miljaye
