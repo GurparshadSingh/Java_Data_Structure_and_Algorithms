@@ -1,0 +1,59 @@
+import java.util.*;
+
+public class solution {
+    static class Job {
+        int id;
+        int deadline;
+        int profit;
+
+        public Job(int i, int d, int p) {
+            id = i;
+            deadline = d;
+            profit = p;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        int jobsInfo[][] = { { 4, 20 }, { 1, 10 }, { 1, 40 }, { 1, 30 } };
+
+        ArrayList<Job> jobs = new ArrayList<>();
+
+        // Step 1: Create jobs
+        for (int i = 0; i < jobsInfo.length; i++) {
+            jobs.add(new Job(i, jobsInfo[i][0], jobsInfo[i][1]));
+        }
+
+        // Step 2: Sort by profit (descending)
+        Collections.sort(jobs, (a, b) -> b.profit - a.profit);
+
+        // Step 3: Find max deadline
+        int maxDeadline = 0;
+        for (Job job : jobs) {
+            maxDeadline = Math.max(maxDeadline, job.deadline);
+        }
+
+        // Step 4: Create slots
+        int slot[] = new int[maxDeadline];
+        Arrays.fill(slot, -1);
+
+        ArrayList<Integer> seq = new ArrayList<>();
+
+        // Step 5: Place jobs
+        for (Job curr : jobs) {
+            for (int j = curr.deadline - 1; j >= 0; j--) {
+                if (slot[j] == -1) {
+                    slot[j] = curr.id;
+                    seq.add(curr.id);
+                    break;
+                }
+            }
+        }
+
+        // Output
+        System.out.println("max jobs = " + seq.size());
+        for (int id : seq) {
+            System.out.print(id + " ");
+        }
+    }
+}
