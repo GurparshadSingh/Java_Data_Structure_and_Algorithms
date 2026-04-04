@@ -1,0 +1,70 @@
+public class solution {
+
+    // Node class
+    static class Node {
+        int data;
+        Node left, right;
+
+        Node(int data) {
+            this.data = data;
+            this.left = null;
+            this.right = null;
+        }
+    }
+
+    // Info class (diameter + height ek saath return karne ke liye)
+    static class Info {
+        int dia;
+        int ht;
+
+        Info(int dia, int ht) {
+            this.dia = dia;
+            this.ht = ht;
+        }
+    }
+
+    // Optimized Diameter Function (O(n))
+    public static Info diameter(Node root) {
+        if (root == null) {
+            return new Info(0, 0);
+        }
+
+        Info left = diameter(root.left);
+        Info right = diameter(root.right);
+
+        // height calculate
+        int height = Math.max(left.ht, right.ht) + 1;
+
+        // diameter calculate
+        int diam = Math.max(
+                Math.max(left.dia, right.dia),
+                left.ht + right.ht + 1
+        );
+
+        return new Info(diam, height);
+    }
+
+    // MAIN FUNCTION
+    public static void main(String[] args) {
+
+        /*
+                1
+              /   \
+             2     3
+            / \   / \
+           4   5 6   7
+        */
+
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.left = new Node(6);
+        root.right.right = new Node(7);
+
+        Info result = diameter(root);
+
+        System.out.println("Diameter: " + result.dia);
+    }
+}
