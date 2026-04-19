@@ -1,0 +1,33 @@
+class Student {
+    int[] marks;
+
+    Student(int m) {
+        marks = new int[1];
+        marks[0] = m;
+    }
+
+    // Shallow Copy
+    Student(Student s) {
+        this.marks = s.marks; // copy reference only
+    }
+
+    // Deep Copy
+    // Student(Student s) {
+    //     this.marks = new int[1];
+    //     this.marks[0] = s.marks[0]; // copy value
+    // }
+
+    void show() {
+        System.out.println("Marks: " + marks[0]);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student(90);
+        Student s2 = new Student(s1);
+        s2.marks[0] = 50;
+        s1.show(); // Marks: 50
+        s2.show(); // Marks: 50
+    }
+}
