@@ -1,0 +1,16 @@
+public static int transform(Node root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int leftSum = transform(root.left);
+        int rightSum = transform(root.right);
+
+        int oldValue = root.data;
+
+        // Update node to sum of left + right subtree
+        root.data = leftSum + rightSum;
+
+        // Return total sum including original value
+        return oldValue + root.data;
+    }
