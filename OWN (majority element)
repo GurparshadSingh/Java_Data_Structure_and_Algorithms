@@ -1,0 +1,32 @@
+
+import java.util.HashMap;
+
+public class practice {
+
+    public static int majorityElement(int[] nums) {
+        int n = nums.length;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int count = 0;
+        for (int j = 0; j < nums.length; j++) {
+            int target = nums[j];
+            for (int i = 0; i < nums.length; i++) {
+                if (nums[i] == target) {
+                    count++;
+                }
+            }
+            map.put(target, count);
+            count = 0;
+        }
+        for (Integer key : map.keySet()) {
+            if (map.get(key) > n / 2) {
+                return key;
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        int nums[] = { 3, 2, 3 };
+        majorityElement(nums);
+    }
+}
