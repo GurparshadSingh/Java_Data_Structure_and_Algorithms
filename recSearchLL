@@ -142,6 +142,9 @@ public class LinkedList {
         }
         return idx+1;
     }
+public int recSearch(int key){
+ return helper(head,key);
+}
 
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
